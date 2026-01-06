@@ -15,7 +15,7 @@ Simple REST API for Todo List built with **Golang** and **MySQL**.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/USERNAME/golang-todo-api.git
+git clone https://github.com/auxiliaz/golang-todo-api.git
 cd golang-todo-api
 ```
 

@@ -94,8 +94,12 @@ Server akan berjalan di:
   }
 ]
 ```
-### Get Todo By ID **GET** /todo?id=1 **Response 200 OK**
-json
+### Get Todo By ID 
+
+**GET** `/todo?id=1` 
+
+**Response 200 OK**
+```json
 {
   "id": 1,
   "title": "Belajar Golang",
@@ -103,20 +107,29 @@ json
   "status": "pending",
   "created_at": "2026-01-06 18:40:12"
 }
+```
+
 **Response 404 Not Found**
-json
+```json
 {
   "error": "Todo not found"
 }
---- 
-### Create Todo **POST** /todo/create **Request Body**
-json
+```
+
+### Create Todo 
+
+**POST** `/todo/create` 
+
+**Request Body**
+```json
 {
   "title": "Belajar Golang",
   "description": "Membuat REST API"
 }
+```
+
 **Response 201 Created**
-json
+```json
 {
   "id": 2,
   "title": "Belajar Golang",
@@ -124,22 +137,31 @@ json
   "status": "pending",
   "created_at": "2026-01-06 18:45:00"
 }
---- 
-### Update Todo **PUT** /todo/update?id=1 **Request Body**
-json
+```
+
+### Update Todo 
+
+**PUT** `/todo/update?id=1` 
+
+**Request Body**
+```json
 {
   "title": "Belajar Golang Updated",
   "description": "Sudah selesai",
   "status": "done"
 }
+```
+
 **Response 200 OK**
-json
+```json
 {
   "message": "Todo updated successfully"
 }
---- 
-### Delete Todo **DELETE** /todo/delete?id=1 **Response 204 No Content** 
----
+```
+
+### Delete Todo 
+**DELETE** `/todo/delete?id=1`
+**Response 204 No Content** 
 
 ## Struktur penting
 

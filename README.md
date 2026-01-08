@@ -1,27 +1,26 @@
-# Golang Todo API
+# Golang Todo API – RESTful Backend Todo List
 
-Simple REST API for Todo List built with **Golang** and **MySQL**.
-
----
+Golang Todo API adalah aplikasi **REST API sederhana** untuk manajemen todo list yang dibangun menggunakan **Golang** dan **MySQL**.  
+Aplikasi ini mendukung operasi CRUD (Create, Read, Update, Delete).
 
 ## Tech Stack
-- Golang (net/http)
-- MySQL
-- go-sql-driver/mysql
 
----
+- Bahasa: Golang
+- HTTP Server: net/http
+- Database: MySQL
+- Driver Database: go-sql-driver/mysql
 
-## Setup & Run
+## Menjalankan proyek
 
-### 1. Clone Repository
+Pastikan **Golang** dan **MySQL** sudah terpasang.
+
+1. **Clone repository**
 ```bash
 git clone https://github.com/auxiliaz/golang-todo-api.git
 cd golang-todo-api
 ```
-
----
-
-### 2. Database Setup (MySQL)
+2. **Setup Database (MySQL)**
+Buat database dan tabel menggunakan perintah berikut:
 ```sql
 CREATE DATABASE todo_db;
 USE todo_db;
@@ -34,28 +33,53 @@ CREATE TABLE todos (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
-
----
-
-### 3. Run Application
+Pastikan konfigurasi koneksi database di file aplikasi (`main.go`) sudah sesuai dengan:
+- host
+- username
+- password
+- nama database (`todo_db`)
+   - 
+3. **Jalankan development server**
 ```bash
 go run main.go
 ```
-
-Server running on:
+Server akan berjalan di:
+```bash
+[go run main.go](http://localhost:8080
 ```
-http://localhost:8080
-```
 
----
+## Fitur utama
 
-## Endpoints
+- Menampilkan seluruh data todo.
+- Menampilkan detail todo berdasarkan ID.
+- Menambahkan todo baru.
+- Memperbarui data todo.
+- Menghapus todo.
+- Penyimpanan data menggunakan database MySQL.
 
-### Get All Todos
-**GET** `/todos`
+## Alur kerja aplikasi
 
-**Response 200 OK**
-```json
+1. **Koneksi Database**
+   - Aplikasi melakukan koneksi ke database MySQL saat server dijalankan.
+   - Semua data todo disimpan dan diambil dari tabel `todos`.
+
+2. **Request dari Client**
+   - Client (misalnya Postman atau frontend) mengirim request HTTP ke endpoint API.
+   - Data dikirim dan diterima dalam format JSON.
+
+3. **Proses CRUD**
+   - Create: Menyimpan todo baru ke database.
+   - Read: Mengambil seluruh todo atau todo berdasarkan ID.
+   - Update: Memperbarui title, description, atau status todo.
+   - Delete: Menghapus todo dari database.
+
+4. **Response API**
+   - API mengembalikan response JSON sesuai dengan hasil proses (success / error).
+
+## Endpoints 
+
+### Get All Todos **GET** /todos **Response 200 OK**
+json
 [
   {
     "id": 1,
@@ -65,15 +89,9 @@ http://localhost:8080
     "created_at": "2026-01-06 18:40:12"
   }
 ]
-```
-
----
-
-### Get Todo By ID
-**GET** `/todo?id=1`
-
-**Response 200 OK**
-```json
+--- 
+### Get Todo By ID **GET** /todo?id=1 **Response 200 OK**
+json
 {
   "id": 1,
   "title": "Belajar Golang",
@@ -81,30 +99,20 @@ http://localhost:8080
   "status": "pending",
   "created_at": "2026-01-06 18:40:12"
 }
-```
-
 **Response 404 Not Found**
-```json
+json
 {
   "error": "Todo not found"
 }
-```
-
----
-
-### Create Todo
-**POST** `/todo/create`
-
-**Request Body**
-```json
+--- 
+### Create Todo **POST** /todo/create **Request Body**
+json
 {
   "title": "Belajar Golang",
   "description": "Membuat REST API"
 }
-```
-
 **Response 201 Created**
-```json
+json
 {
   "id": 2,
   "title": "Belajar Golang",
@@ -112,38 +120,30 @@ http://localhost:8080
   "status": "pending",
   "created_at": "2026-01-06 18:45:00"
 }
-```
-
----
-
-### Update Todo
-**PUT** `/todo/update?id=1`
-
-**Request Body**
-```json
+--- 
+### Update Todo **PUT** /todo/update?id=1 **Request Body**
+json
 {
   "title": "Belajar Golang Updated",
   "description": "Sudah selesai",
   "status": "done"
 }
-```
-
 **Response 200 OK**
-```json
+json
 {
   "message": "Todo updated successfully"
 }
-```
-
+--- 
+### Delete Todo **DELETE** /todo/delete?id=1 **Response 204 No Content** 
 ---
 
-### Delete Todo
-**DELETE** `/todo/delete?id=1`
+## Struktur penting
 
-**Response 204 No Content**
+- `main.go` – Entry point aplikasi dan routing API.
+- `database/` – Konfigurasi dan koneksi MySQL.
+- `handlers/` – Logika handler untuk setiap endpoint.
+- `models/` – Struktur data todo.
 
----
-
-## Notes
-- API tested using Postman
-- All request and response use JSON format
+## Pengujian 
+- API diuji menggunakan Postman.
+- Seluruh request dan response menggunakan format JSON.

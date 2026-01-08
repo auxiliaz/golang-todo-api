@@ -159,8 +159,10 @@ Server akan berjalan di:
 }
 ```
 
-### Delete Todo 
+### Delete Todo
+
 **DELETE** `/todo/delete?id=1`
+
 **Response 204 No Content** 
 
 ## Struktur penting

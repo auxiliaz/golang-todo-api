@@ -38,7 +38,7 @@ Pastikan konfigurasi koneksi database di file aplikasi (`main.go`) sudah sesuai 
 - username
 - password
 - nama database (`todo_db`)
-   - 
+
 3. **Jalankan development server**
 ```bash
 go run main.go

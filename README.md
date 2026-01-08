@@ -78,8 +78,9 @@ Server akan berjalan di:
 
 ## Endpoints 
 
-### Get All Todos **GET** /todos **Response 200 OK**
-json
+**Get All Todos **GET** /todos** 
+**Response 200 OK**
+```json
 [
   {
     "id": 1,
@@ -89,7 +90,7 @@ json
     "created_at": "2026-01-06 18:40:12"
   }
 ]
---- 
+```
 ### Get Todo By ID **GET** /todo?id=1 **Response 200 OK**
 json
 {

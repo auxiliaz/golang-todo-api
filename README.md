@@ -45,7 +45,7 @@ go run main.go
 ```
 Server akan berjalan di:
 ```bash
-[go run main.go](http://localhost:8080
+http://localhost:8080
 ```
 
 ## Fitur utama
